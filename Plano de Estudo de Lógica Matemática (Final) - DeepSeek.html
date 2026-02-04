@@ -1,0 +1,2209 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Unificado de Estudo em Lógica Matemática</title>
+    <style>
+        :root {
+            --primary-color: #1a2a6c;
+            --secondary-color: #2b6cb0;
+            --philosophical-color: #9b59b6;
+            --mathematical-color: #e74c3c;
+            --proof-theory-color: #8e44ad;
+            --model-theory-color: #d35400;
+            --type-theory-color: #3498db;
+            --modal-logic-color: #16a085;
+            --nonclassical-color: #2ecc71;
+            --metalanguage-color: #f39c12;
+            --category-color: #27ae60;
+            --time-color: #e67e22;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #1a202c;
+            background: linear-gradient(135deg, #f8fafc 0%, #e9ecef 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .master-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            border-top: 12px solid var(--primary-color);
+        }
+        
+        .container {
+            padding: 40px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 1.8rem;
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .formation-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .formation-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .master-stats {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 4px solid var(--metalanguage-color);
+            padding-bottom: 0.8rem;
+            margin: 3.5rem 0 2rem;
+            font-size: 1.9rem;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        h2:after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--proof-theory-color), var(--model-theory-color));
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin: 2.5rem 0 1.2rem;
+            font-size: 1.5rem;
+            padding-left: 1rem;
+            border-left: 5px solid var(--secondary-color);
+        }
+        
+        h4 {
+            color: var(--primary-color);
+            margin: 1.8rem 0 1rem;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        h4:before {
+            content: "📖";
+            margin-right: 12px;
+        }
+        
+        .phase-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .phase-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 8px solid;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            height: 100%;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .phase-card.philosophical {
+            border-color: var(--philosophical-color);
+            background: linear-gradient(to bottom right, #f9f0ff, white);
+        }
+        
+        .phase-card.mathematical {
+            border-color: var(--mathematical-color);
+            background: linear-gradient(to bottom right, #ffeaea, white);
+        }
+        
+        .phase-card.metalanguage {
+            border-color: var(--metalanguage-color);
+            background: linear-gradient(to bottom right, #fff9e6, white);
+        }
+        
+        .phase-card.proof-theory {
+            border-color: var(--proof-theory-color);
+            background: linear-gradient(to bottom right, #f5e8ff, white);
+        }
+        
+        .phase-card.model-theory {
+            border-color: var(--model-theory-color);
+            background: linear-gradient(to bottom right, #fff4e6, white);
+        }
+        
+        .phase-card.type-theory {
+            border-color: var(--type-theory-color);
+            background: linear-gradient(to bottom right, #e8f6f3, white);
+        }
+        
+        .phase-card.modal-logic {
+            border-color: var(--modal-logic-color);
+            background: linear-gradient(to bottom right, #e8f8f5, white);
+        }
+        
+        .phase-card.nonclassical {
+            border-color: var(--nonclassical-color);
+            background: linear-gradient(to bottom right, #e8f8f5, white);
+        }
+        
+        .phase-card.category-theory {
+            border-color: var(--category-color);
+            background: linear-gradient(to bottom right, #e8f8f5, white);
+        }
+        
+        .phase-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-color);
+            color: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 1;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+        
+        .phase-card.philosophical .phase-number { background: var(--philosophical-color); }
+        .phase-card.mathematical .phase-number { background: var(--mathematical-color); }
+        .phase-card.metalanguage .phase-number { background: var(--metalanguage-color); }
+        .phase-card.proof-theory .phase-number { background: var(--proof-theory-color); }
+        .phase-card.model-theory .phase-number { background: var(--model-theory-color); }
+        .phase-card.type-theory .phase-number { background: var(--type-theory-color); }
+        .phase-card.modal-logic .phase-number { background: var(--modal-logic-color); }
+        .phase-card.nonclassical .phase-number { background: var(--nonclassical-color); }
+        .phase-card.category-theory .phase-number { background: var(--category-color); }
+        
+        .time-estimate {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 1rem 1.2rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-weight: bold;
+            color: var(--primary-color);
+            border-left: 5px solid var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+        }
+        
+        .time-estimate:before {
+            content: "⏱️";
+            font-size: 1.2rem;
+        }
+        
+        .time-estimate.metalanguage {
+            border-left-color: var(--metalanguage-color);
+            background: linear-gradient(135deg, #fff9e6, #ffecb3);
+        }
+        
+        .time-estimate.proof-theory {
+            border-left-color: var(--proof-theory-color);
+            background: linear-gradient(135deg, #f5e8ff, #edd9f7);
+        }
+        
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .book-item {
+            background: linear-gradient(135deg, #f9f9f9, #f0f0f0);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 5px solid var(--philosophical-color);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .book-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .book-item.mathematical {
+            border-left: 5px solid var(--mathematical-color);
+            background: linear-gradient(135deg, #ffeaea, #fad9d9);
+        }
+        
+        .book-item.metalanguage {
+            border-left: 5px solid var(--metalanguage-color);
+            background: linear-gradient(135deg, #fff9e6, #ffecb3);
+        }
+        
+        .book-item.proof-theory {
+            border-left: 5px solid var(--proof-theory-color);
+            background: linear-gradient(135deg, #f5e8ff, #edd9f7);
+        }
+        
+        .book-item.type-theory {
+            border-left: 5px solid var(--type-theory-color);
+            background: linear-gradient(135deg, #e8f6f3, #d1f2eb);
+        }
+        
+        .book-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+            line-height: 1.4;
+        }
+        
+        .book-author {
+            color: #4a5568;
+            font-style: italic;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+        
+        .book-edition {
+            color: #718096;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .book-description {
+            color: #444;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .book-category {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin: 0.5rem 0;
+            font-weight: bold;
+        }
+        
+        .book-category.core {
+            background: #27ae60;
+        }
+        
+        .book-category.complementary {
+            background: #f39c12;
+        }
+        
+        .book-category.reference {
+            background: #3498db;
+        }
+        
+        .book-category.proof-theory {
+            background: var(--proof-theory-color);
+        }
+        
+        .book-category.type-theory {
+            background: var(--type-theory-color);
+        }
+        
+        .chapter-list {
+            list-style-type: none;
+            margin: 1rem 0;
+        }
+        
+        .chapter-list li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .chapter-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .chapter-list li:before {
+            content: "📘";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .chapter-list.proof-theory li:before {
+            content: "🧾";
+            color: var(--proof-theory-color);
+        }
+        
+        .chapter-list.type-theory li:before {
+            content: "λ";
+            color: var(--type-theory-color);
+            font-weight: bold;
+        }
+        
+        .study-block {
+            background: linear-gradient(135deg, #e8f4fd, #d9edf7);
+            border-left: 5px solid var(--secondary-color);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+        }
+        
+        .study-block.philosophical {
+            background: linear-gradient(135deg, #f5e8ff, #edd9f7);
+            border-left: 5px solid var(--philosophical-color);
+        }
+        
+        .study-block.mathematical {
+            background: linear-gradient(135deg, #ffeaea, #fad9d9);
+            border-left: 5px solid var(--mathematical-color);
+        }
+        
+        .study-block.metalanguage {
+            background: linear-gradient(135deg, #fff9e6, #ffecb3);
+            border-left: 5px solid var(--metalanguage-color);
+        }
+        
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .strategy-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--secondary-color);
+        }
+        
+        .strategy-card.proof-theory {
+            border-top: 4px solid var(--proof-theory-color);
+            background: linear-gradient(to bottom, #f9f0ff, white);
+        }
+        
+        .strategy-card.type-theory {
+            border-top: 4px solid var(--type-theory-color);
+            background: linear-gradient(to bottom, #e8f6f3, white);
+        }
+        
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+            margin: 1.8rem 0;
+        }
+        
+        .concept-card {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--philosophical-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        .concept-card.mathematical {
+            border-left: 4px solid var(--mathematical-color);
+        }
+        
+        .concept-card.proof-theory {
+            border-left: 4px solid var(--proof-theory-color);
+        }
+        
+        .download-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--philosophical-color));
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 4rem 0;
+            text-align: center;
+        }
+        
+        .btn-download {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            border: 3px solid white;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            font-size: 1.1rem;
+        }
+        
+        .btn-download:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .parallel-tag {
+            background: var(--modal-logic-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 1rem;
+            vertical-align: middle;
+        }
+        
+        .note-box {
+            background: linear-gradient(135deg, #e8f6f3, #d1f2eb);
+            border: 2px solid var(--modal-logic-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #fff9e6, #ffecb3);
+            border: 2px solid #f39c12;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+        }
+        
+        .total-time {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--philosophical-color));
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 3.5rem 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .concept-highlight {
+            background: #fffacd;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 1024px) {
+            .phase-container {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+            
+            .book-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+            
+            header {
+                padding: 2rem 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .phase-container, .book-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .phase-card:hover {
+                transform: none;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="master-container">
+        <header>
+            <h1>Plano Unificado de Estudo em Lógica Matemática</h1>
+            <div class="subtitle">Síntese de Todas as Propostas IA - Progressão Cautelosa para Formação Filosófica</div>
+            
+            <div class="formation-badges">
+                <span class="formation-badge">21 Fases Estruturadas</span>
+                <span class="formation-badge">Transição Filosofia→Matemática</span>
+                <span class="formation-badge">Progressão Cautelosa</span>
+                <span class="formation-badge">Metalógica como Eixo Central</span>
+                <span class="formation-badge">Teoria da Prova Explícita</span>
+                <span class="formation-badge">Teoria de Tipos</span>
+                <span class="formation-badge">TODOS os Livros das IA's</span>
+            </div>
+            
+            <div class="master-stats">
+                <div class="stat-item">
+                    <div class="stat-value">64</div>
+                    <div class="stat-label">Livros Especializados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">6-8</div>
+                    <div class="stat-label">Anos de Estudo</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">310-420</div>
+                    <div class="stat-label">Semanas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">21</div>
+                    <div class="stat-label">Fases</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <!-- INTRODUÇÃO -->
+            <div class="note-box">
+                <h3>🎯 Princípios Metodológicos - Adaptação para Formação Filosófica</h3>
+                <p><strong>Perfil do Estudante:</strong> Formação filosófica sólida, bases matemáticas frágeis, interesse na transição para rigor matemático.</p>
+                <p><strong>Princípios:</strong></p>
+                <ul class="chapter-list">
+                    <li><strong>Progressão Cautelosa:</strong> Cada conceito matemático será introduzido gradualmente</li>
+                    <li><strong>Ênfase Conceitual:</strong> Compreensão profunda antes de formalismo técnico</li>
+                    <li><strong>Metalógica como Eixo:</strong> Retornos frequentes à metateoria para unificação</li>
+                    <li><strong>Exercícios:</strong> Resolver 70-80% autonomamente antes de consultar soluções</li>
+                    <li><strong>Revisões:</strong> 1-3 semanas dedicadas ao final de cada fase</li>
+                    <li><strong>Ritmo:</strong> 10-20 horas semanais, adaptável às necessidades individuais</li>
+                </ul>
+            </div>
+
+            <!-- FASE 1: INTRODUÇÃO À LÓGICA FORMAL -->
+            <section id="phase1">
+                <h2>FASE 1: Introdução à Lógica Formal</h2>
+                <div class="time-estimate">8-12 semanas + 1 semana revisão</div>
+                
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <strong>Conceitos Fundamentais</strong>
+                        <p>Argumentos, validade, proposições, conectivos lógicos</p>
+                    </div>
+                    <div class="concept-card">
+                        <strong>Métodos</strong>
+                        <p>Tabelas de verdade, árvores de verdade, tradução formal</p>
+                    </div>
+                </div>
+                
+                <div class="book-grid">
+                    <div class="book-item">
+                        <span class="book-category core">NÚCLEO PRINCIPAL</span>
+                        <div class="book-title">An Introduction to Formal Logic (2ª edição, 2020)</div>
+                        <div class="book-author">Peter Smith</div>
+                        <div class="book-edition">Cambridge University Press</div>
+                        <div class="book-description">Didática excepcional para iniciantes com formação filosófica. Progressão cuidadosa desde argumentos informais até provas formais.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Essenciais (estudo sequencial):</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-4 (2-3 semanas):</strong> Argumentos, validade, lógica proposicional básica. <span class="concept-highlight">Conceitos: Proposição, conectivos, tabelas verdade</span></li>
+                                <li><strong>Cap. 5-10 (3-4 semanas):</strong> Árvores de verdade proposicionais. <span class="concept-highlight">Conceitos: Validade, consequência lógica, árvores de refutação</span></li>
+                                <li><strong>Cap. 11-16 (4-5 semanas):</strong> Lógica de predicados, quantificação. <span class="concept-highlight">Conceitos: Quantificadores, domínio, fórmulas abertas</span></li>
+                                <li><strong>Cap. 17-22 (2-3 semanas):</strong> Provas, identidade, descrições definidas. <span class="concept-highlight">Conceitos: Igualdade, descrições, sistemas de prova</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item">
+                        <span class="book-category complementary">COMPLEMENTAR</span>
+                        <div class="book-title">Language, Proof and Logic</div>
+                        <div class="book-author">Jon Barwise & John Etchemendy</div>
+                        <div class="book-edition">CSLI Publications, 2ª edição</div>
+                        <div class="book-description">Acompanha software para visualização e prática. Excelente para compreensão intuitiva através de ferramentas computacionais.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos para Prática:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-4 (estudo paralelo):</strong> Lógica sentencial básica com software</li>
+                                <li><strong>Cap. 5-9 (opcional):</strong> Lógica de predicados com exercícios interativos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="study-block philosophical">
+                    <h4>📅 Estratégia de Estudo - Fase 1:</h4>
+                    <p><strong>Objetivo:</strong> Transição suave do pensamento filosófico para formalismo lógico básico.</p>
+                    <p><strong>Metodologia:</strong> Estudar Smith sequencialmente, usando Barwise & Etchemendy para prática adicional com software.</p>
+                    <p><strong>Atenção Especial:</strong> Dominar a distinção entre sintaxe e semântica desde o início.</p>
+                </div>
+            </section>
+
+            <!-- FASE 2: LÓGICA CLÁSSICA RIGOROSA -->
+            <section id="phase2">
+                <h2>FASE 2: Lógica Clássica Rigorosa</h2>
+                <div class="time-estimate">11-15 semanas + 1-2 semanas revisão</div>
+                
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <strong>Semântica Formal</strong>
+                        <p>Validade semântica, modelos, consequência lógica</p>
+                    </div>
+                    <div class="concept-card">
+                        <strong>Provas Naturais</strong>
+                        <p>Dedução natural, regras de inferência</p>
+                    </div>
+                    <div class="concept-card">
+                        <strong>Metateoria Básica</strong>
+                        <p>Correção, completude, teoremas fundamentais</p>
+                    </div>
+                </div>
+                
+                <div class="book-grid">
+                    <div class="book-item">
+                        <span class="book-category core">APROFUNDAMENTO</span>
+                        <div class="book-title">Logic: The Laws of Truth</div>
+                        <div class="book-author">Nicholas J.J. Smith</div>
+                        <div class="book-edition">Princeton University Press, 2012</div>
+                        <div class="book-description">Aprofundamento técnico na semântica formal com rigor filosófico. Excelente ponte entre intuição filosófica e formalismo matemático.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos para Estudo Detalhado:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-9 (3-5 semanas):</strong> Lógica proposicional avançada, tabelas de verdade, validade. <span class="concept-highlight">Conceitos: Funções de verdade, tautologias, contradições</span></li>
+                                <li><strong>Cap. 10-19 (6-8 semanas):</strong> Lógica de predicados, tradução formal, provas naturais, metateoria básica. <span class="concept-highlight">Conceitos: Estruturas, satisfação, dedução natural</span></li>
+                                <li><strong>Cap. 20+ (2 semanas):</strong> Paradoxos, free logic, tópicos filosóficos avançados. <span class="concept-highlight">Conceitos: Paradoxos semânticos, lógica livre</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item">
+                        <span class="book-category complementary">INTRODUÇÃO MATEMÁTICA</span>
+                        <div class="book-title">Classical and Nonclassical Logics: An Introduction to the Mathematics of Propositions</div>
+                        <div class="book-author">Eric Schechter</div>
+                        <div class="book-edition">Princeton University Press, 2005</div>
+                        <div class="book-description">Abordagem matemática rigorosa mas acessível. Ideal para transição gradual para formalismo matemático.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Iniciais (estudo seletivo):</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-4 (3-4 semanas):</strong> Lógica proposicional do ponto de vista matemático. <span class="concept-highlight">Conceitos: Álgebra booleana, reticulados</span></li>
+                                <li><strong>Selecionar capítulos 5-8 conforme interesse:</strong> Introdução a lógicas não-clássicas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FASE 3: TÉCNICAS DE PROVA MATEMÁTICA -->
+            <section id="phase3">
+                <h2>FASE 3: Técnicas de Prova Matemática</h2>
+                <div class="time-estimate">11-15 semanas + 1 semana revisão</div>
+                
+                <div class="concept-grid">
+                    <div class="concept-card mathematical">
+                        <strong>Provas Diretas</strong>
+                        <p>Estrutura, organização, clareza</p>
+                    </div>
+                    <div class="concept-card mathematical">
+                        <strong>Prova por Contradição</strong>
+                        <p>Reductio ad absurdum</p>
+                    </div>
+                    <div class="concept-card mathematical">
+                        <strong>Indução Matemática</strong>
+                        <p>Princípio da indução, aplicações</p>
+                    </div>
+                    <div class="concept-card mathematical">
+                        <strong>Teoria de Conjuntos Básica</strong>
+                        <p>Conjuntos, relações, funções</p>
+                    </div>
+                </div>
+                
+                <div class="book-grid">
+                    <div class="book-item mathematical">
+                        <span class="book-category core">TREINO PRÁTICO</span>
+                        <div class="book-title">How to Prove It: A Structured Approach (3ª edição, 2019)</div>
+                        <div class="book-author">Daniel J. Velleman</div>
+                        <div class="book-edition">Cambridge University Press</div>
+                        <div class="book-description">A "bíblia" das provas matemáticas. Treino intensivo na mecânica das provas, essencial para transição de filosofia para matemática pura.</div>
+                        <div class="book-chapters">
+                            <strong>Estudo Completo do Livro:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-2 (2-3 semanas):</strong> Lógica informal e teoria básica de conjuntos. <span class="concept-highlight">Conceitos: Elementos, subconjuntos, operações</span></li>
+                                <li><strong>Cap. 3-4 (5-7 semanas):</strong> Estratégias de prova, quantificadores múltiplos. <span class="concept-highlight">Conceitos: Prova direta, contrapositiva, contradição, casos</span></li>
+                                <li><strong>Cap. 5-7 (4-5 semanas):</strong> Indução matemática, relações, funções. <span class="concept-highlight">Conceitos: Relações de equivalência, ordem, funções injetivas/sobrejetivas</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item mathematical">
+                        <span class="book-category complementary">FUNDAMENTAÇÃO MATEMÁTICA</span>
+                        <div class="book-title">A Mathematical Introduction to Logic (2ª edição, 2001)</div>
+                        <div class="book-author">Herbert Enderton</div>
+                        <div class="book-edition">Academic Press</div>
+                        <div class="book-description">Clássico absoluto da lógica matemática. Introdução gradual ao rigor matemático com abordagem cuidadosa.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Iniciais (estudo gradativo):</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 0 (1 semana, referência):</strong> Notas sobre fundamentos. <span class="concept-highlight">Conceitos: Linguagem da teoria dos conjuntos</span></li>
+                                <li><strong>Cap. 1 (3-4 semanas):</strong> Lógica proposicional sentencial. <span class="concept-highlight">Conceitos: Linguagens formais, indução nas fórmulas</span></li>
+                                <li><strong>Cap. 2 (4-5 semanas):</strong> Lógica de primeira ordem. <span class="concept-highlight">Conceitos: Termos, fórmulas, estruturas</span></li>
+                            </ul>
+                            <p style="font-size: 0.85rem; margin-top: 0.5rem; color: #666;">
+                                <strong>Estratégia:</strong> Estudar paralelamente a Velleman. Enderton para rigor formal, Velleman para prática.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FASE 4: LÓGICA, LINGUAGEM E FILOSOFIA -->
+            <section id="phase4">
+                <h2>FASE 4: Lógica, Linguagem e Filosofia <span class="parallel-tag">INÍCIO PARALELO</span></h2>
+                <div class="time-estimate">16-23 semanas + 2 semanas revisão</div>
+                
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <strong>Semântica Formal</strong>
+                        <p>Modelos, mundos possíveis, intensionabilidade</p>
+                    </div>
+                    <div class="concept-card">
+                        <strong>Lógica Intensional</strong>
+                        <p>Modalidades, tempo, conhecimento</p>
+                    </div>
+                    <div class="concept-card">
+                        <strong>Filosofia da Lógica</strong>
+                        <p>Metateoria, fundamentos, aplicações</p>
+                    </div>
+                </div>
+                
+                <div class="book-grid">
+                    <div class="book-item">
+                        <span class="book-category core">PERSPECTIVA LINGUÍSTICA</span>
+                        <div class="book-title">Logic, Language, and Meaning (Volumes 1 e 2, 1991)</div>
+                        <div class="book-author">L.T.F. Gamut (pseudônimo coletivo)</div>
+                        <div class="book-edition">University of Chicago Press</div>
+                        <div class="book-description">Abordagem integrada de lógica, linguística formal e semântica. Conexão entre formalismo lógico e análise linguística.</div>
+                        <div class="book-chapters">
+                            <strong>Volume 1 - Introduction to Logic:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-4 (4-6 semanas):</strong> Lógica proposicional formal. <span class="concept-highlight">Conceitos: Sintaxe, semântica, conectivos</span></li>
+                                <li><strong>Cap. 5-7 (5-7 semanas):</strong> Lógica de predicados. <span class="concept-highlight">Conceitos: Quantificação múltipla, identidade</span></li>
+                                <li><strong>Cap. 8-9 (3-4 semanas):</strong> Sistemas de dedução natural. <span class="concept-highlight">Conceitos: Regras de inferência, provas formais</span></li>
+                            </ul>
+                            <strong>Volume 2 - Intensional Logic and Logical Grammar:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-3 (4-6 semanas):</strong> Lógica modal básica. <span class="concept-highlight">Conceitos: Operadores modais, mundos possíveis</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item">
+                        <span class="book-category core">PERSPECTIVA FILOSÓFICA</span>
+                        <div class="book-title">Logic for Philosophy (2010)</div>
+                        <div class="book-author">Theodore Sider</div>
+                        <div class="book-edition">Oxford University Press</div>
+                        <div class="book-description">Foco em aplicações filosóficas e metateoria. Abordagem analítica rigorosa com ênfase em problemas filosóficos.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Selecionados:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-4 (3-4 semanas):</strong> Lógica básica (revisão aprofundada). <span class="concept-highlight">Conceitos: Metateoria elementar</span></li>
+                                <li><strong>Cap. 5-6 (5-7 semanas):</strong> Metateoria avançada. <span class="concept-highlight">Conceitos: Completude, compacidade</span></li>
+                                <li><strong>Cap. 7-8 (4-6 semanas):</strong> Lógica modal avançada. <span class="concept-highlight">Conceitos: Axiomas modais, semântica de Kripke</span></li>
+                                <li><strong>Cap. 9-10 (4-6 semanas):</strong> Lógicas não-clássicas (introdução). <span class="concept-highlight">Conceitos: Intuicionismo, lógica livre</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FASE 5: LÓGICA MATEMÁTICA INTERMÉDIA -->
+            <section id="phase5">
+                <h2>FASE 5: Lógica Matemática Intermédia <span class="parallel-tag">PARALELA</span></h2>
+                <div class="time-estimate">24-34 semanas + 2-3 semanas revisão</div>
+                
+                <div class="concept-grid">
+                    <div class="concept-card mathematical">
+                        <strong>Sistemas Axiomáticos</strong>
+                        <p>Axiomas, regras, derivações</p>
+                    </div>
+                    <div class="concept-card mathematical">
+                        <strong>Tableaux Semânticos</strong>
+                        <p>Método analítico, refutação</p>
+                    </div>
+                    <div class="concept-card mathematical">
+                        <strong>Sistemas de Sequentes</strong>
+                        <p>Cálculo de sequentes, regras estruturais</p>
+                    </div>
+                    <div class="concept-card mathematical">
+                        <strong>Dedução Natural</strong>
+                        <p>Sistemas de Gentzen, regras naturais</p>
+                    </div>
+                </div>
+                
+                <div class="book-grid">
+                    <div class="book-item mathematical">
+                        <span class="book-category core">TRATAMENTO PROFUNDO</span>
+                        <div class="book-title">Intermediate Logic (1997)</div>
+                        <div class="book-author">David Bostock</div>
+                        <div class="book-edition">Oxford University Press</div>
+                        <div class="book-description">Tratamento profundo dos temas, muito apreciado por filósofos pela clareza conceitual e rigor equilibrado.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Essenciais:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-3 (3-4 semanas):</strong> Revisão de lógica elementar. <span class="concept-highlight">Conceitos: Linguagens, interpretações</span></li>
+                                <li><strong>Cap. 4-5 (6-8 semanas):</strong> Sistemas axiomáticos formais. <span class="concept-highlight">Conceitos: Axiomatização, derivações</span></li>
+                                <li><strong>Cap. 6-7 (7-9 semanas):</strong> Tableaux semânticos. <span class="concept-highlight">Conceitos: Tableaux analíticos, completude</span></li>
+                                <li><strong>Cap. 8-9 (8-10 semanas):</strong> Sistemas de sequentes. <span class="concept-highlight">Conceitos: Sequentes, corte, normalização</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item mathematical">
+                        <span class="book-category complementary">FORMALISMO MATEMÁTICO</span>
+                        <div class="book-title">Mathematical Logic (2007)</div>
+                        <div class="book-author">Ian Chiswell & Wilfrid Hodges</div>
+                        <div class="book-edition">Oxford University Press</div>
+                        <div class="book-description">Abordagem matemática rigorosa mas acessível da lógica formal. Excelente ponte entre lógica filosófica e matemática pura.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Selecionados:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 3-4 (6-8 semanas):</strong> Cálculo de predicados formal. <span class="concept-highlight">Conceitos: Árvores de derivação, correção</span></li>
+                                <li><strong>Cap. 5 (4-6 semanas):</strong> Teoremas de completude. <span class="concept-highlight">Conceitos: Completude de primeira ordem</span></li>
+                                <li><strong>Cap. 6 (4-6 semanas):</strong> Teoria dos modelos básica. <span class="concept-highlight">Conceitos: Modelos, isomorfismos</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item mathematical">
+                        <span class="book-category complementary">PERSPECTIVA ABRANGENTE</span>
+                        <div class="book-title">Logic and Structure (5ª edição, 2013)</div>
+                        <div class="book-author">Dirk van Dalen</div>
+                        <div class="book-edition">Springer</div>
+                        <div class="book-description">O padrão ouro para a lógica matemática universitária. Rigor matemático exemplar com didática cuidadosa.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos para Estudo Profundo:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1 (3-4 semanas):</strong> Lógica proposicional avançada. <span class="concept-highlight">Conceitos: Completude proposicional</span></li>
+                                <li><strong>Cap. 2 (6-8 semanas):</strong> Lógica de predicados completa. <span class="concept-highlight">Conceitos: Completude de primeira ordem</span></li>
+                                <li><strong>Cap. 3 (4-6 semanas):</strong> Completude e aplicações. <span class="concept-highlight">Conceitos: Teorema da compacidade</span></li>
+                                <li><strong>Cap. 4 (4-6 semanas):</strong> Teoria dos modelos básica. <span class="concept-highlight">Conceitos: Löwenheim-Skolem</span></li>
+                                <li><strong>Cap. 5 (4-6 semanas):</strong> Lógica intuicionista. <span class="concept-highlight">Conceitos: Matemática construtiva</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item mathematical">
+                        <span class="book-category complementary">REFERÊNCIA CONCISA</span>
+                        <div class="book-title">A Concise Introduction to Mathematical Logic (3ª edição, 2010)</div>
+                        <div class="book-author">Wolfgang Rautenberg</div>
+                        <div class="book-edition">Springer</div>
+                        <div class="book-description">Tratamento compacto mas completo. Excelente para transição suave entre lógica filosófica e matemática.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Sequenciais:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1 (2-3 semanas):</strong> Lógica proposicional (abordagem matemática). <span class="concept-highlight">Conceitos: Álgebra proposicional</span></li>
+                                <li><strong>Cap. 2 (4-6 semanas):</strong> Lógica de predicados de primeira ordem. <span class="concept-highlight">Conceitos: Completude semântica</span></li>
+                                <li><strong>Cap. 3 (3-5 semanas):</strong> Teoremas de completude. <span class="concept-highlight">Conceitos: Completude de Henkin</span></li>
+                                <li><strong>Cap. 4 (3-5 semanas):</strong> Fundamentos da teoria dos modelos. <span class="concept-highlight">Conceitos: Ultraprodutos</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FASE 6: METALÓGICA / METATEORIA -->
+            <section id="phase6">
+                <h2>FASE 6: Metalógica / Metateoria <span class="parallel-tag">PARALELA</span></h2>
+                <div class="time-estimate metalanguage">24-34 semanas + 2-3 semanas revisão</div>
+                
+                <div class="concept-grid">
+                    <div class="concept-card metalanguage">
+                        <strong>Teoremas de Completude</strong>
+                        <p>Correção, completude, teorema de Henkin</p>
+                    </div>
+                    <div class="concept-card metalanguage">
+                        <strong>Teorema da Compacidade</strong>
+                        <p>Conjuntos satisfatíveis, ultraprodutos</p>
+                    </div>
+                    <div class="concept-card metalanguage">
+                        <strong>Teoremas de Löwenheim-Skolem</strong>
+                        <p>Cardinalidade de modelos</p>
+                    </div>
+                    <div class="concept-card metalanguage">
+                        <strong>Teoremas de Incompletude</strong>
+                        <p>Gödel, indecidibilidade</p>
+                    </div>
+                </div>
+                
+                <div class="book-grid">
+                    <div class="book-item metalanguage">
+                        <span class="book-category core">INTRODUÇÃO À METALÓGICA</span>
+                        <div class="book-title">Metalogic: An Introduction to the Metatheory of Standard First Order Logic (1971)</div>
+                        <div class="book-author">Geoffrey Hunter</div>
+                        <div class="book-edition">University of California Press</div>
+                        <div class="book-description">Clássico absoluto da metalógica. Tratamento claro e rigoroso da metateoria de primeira ordem.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Sequenciais:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-5 (4-6 semanas):</strong> Fundamentos da metalógica. <span class="concept-highlight">Conceitos: Metalinguagem, metateoremas</span></li>
+                                <li><strong>Cap. 6-10 (6-8 semanas):</strong> Completude e correção. <span class="concept-highlight">Conceitos: Teoremas fundamentais</span></li>
+                                <li><strong>Cap. 11-15 (5-7 semanas):</strong> Teoremas de Löwenheim-Skolem. <span class="concept-highlight">Conceitos: Cardinalidade de modelos</span></li>
+                                <li><strong>Cap. 16-20 (6-8 semanas):</strong> Aplicações e extensões. <span class="concept-highlight">Conceitos: Limitações da lógica de primeira ordem</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item metalanguage">
+                        <span class="book-category core">COMPUTABILIDADE E LÓGICA</span>
+                        <div class="book-title">Computability and Logic (5ª edição, 2007)</div>
+                        <div class="book-author">George Boolos, John Burgess & Richard Jeffrey</div>
+                        <div class="book-edition">Cambridge University Press</div>
+                        <div class="book-description">Conexões fundamentais entre lógica, computabilidade e teoria da recursão. Fundamental para compreender limites dos sistemas formais.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Essenciais:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-3 (4-6 semanas):</strong> Computabilidade básica. <span class="concept-highlight">Conceitos: Máquinas de Turing, funções recursivas</span></li>
+                                <li><strong>Cap. 4-7 (6-8 semanas):</strong> Incompletude de Gödel. <span class="concept-highlight">Conceitos: Teoremas de incompletude</span></li>
+                                <li><strong>Cap. 8-12 (5-7 semanas):</strong> Decidibilidade e indecidibilidade. <span class="concept-highlight">Conceitos: Problemas decidíveis/indecidíveis</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item metalanguage">
+                        <span class="book-category complementary">ABORDAGEM AMIGÁVEL</span>
+                        <div class="book-title">A Friendly Introduction to Mathematical Logic (2ª edição, 2015)</div>
+                        <div class="book-author">Christopher C. Leary & Lars Kristiansen</div>
+                        <div class="book-edition">Milne Library</div>
+                        <div class="book-description">Introdução acessível aos principais resultados da lógica matemática. Didática cuidadosa para estudantes de filosofia.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Sequenciais:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-2 (3-4 semanas):</strong> Lógica de primeira ordem. <span class="concept-highlight">Conceitos: Sintaxe e semântica</span></li>
+                                <li><strong>Cap. 3-4 (5-7 semanas):</strong> Completude e compacidade. <span class="concept-highlight">Conceitos: Teoremas fundamentais</span></li>
+                                <li><strong>Cap. 5-7 (6-8 semanas):</strong> Incompletude e recursão. <span class="concept-highlight">Conceitos: Teoremas de Gödel</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item metalanguage">
+                        <span class="book-category reference">REFERÊNCIA CLÁSSICA</span>
+                        <div class="book-title">Introduction to Mathematical Logic (6ª edição, 2015)</div>
+                        <div class="book-author">Elliott Mendelson</div>
+                        <div class="book-edition">CRC Press</div>
+                        <div class="book-description">Referência padrão abrangente e rigorosa. Cobertura completa da metateoria clássica.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Selecionados:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-2 (4-6 semanas):</strong> Cálculo proposicional e de predicados. <span class="concept-highlight">Conceitos: Sistemas formais</span></li>
+                                <li><strong>Cap. 3-4 (6-8 semanas):</strong> Formalização da matemática. <span class="concept-highlight">Conceitos: Teoria formal de conjuntos</span></li>
+                                <li><strong>Cap. 5-7 (6-8 semanas):</strong> Computabilidade e indecidibilidade. <span class="concept-highlight">Conceitos: Funções recursivas</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item metalanguage">
+                        <span class="book-category reference">REFERÊNCIA AVANÇADA</span>
+                        <div class="book-title">Mathematical Logic (1967/2001)</div>
+                        <div class="book-author">Joseph R. Shoenfield</div>
+                        <div class="book-edition">A K Peters</div>
+                        <div class="book-description">Clássico absoluto da lógica matemática. Rigoroso mas acessível, fundamental para compreensão profunda.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos para Metalógica:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-2 (4-6 semanas):</strong> Lógica proposicional e de predicados. <span class="concept-highlight">Conceitos: Sistemas formais</span></li>
+                                <li><strong>Cap. 3-4 (6-8 semanas):</strong> Teoria dos modelos básica. <span class="concept-highlight">Conceitos: Modelos, isomorfismos</span></li>
+                                <li><strong>Cap. 5-6 (6-8 semanas):</strong> Teoria da recursão e incompletude. <span class="concept-highlight">Conceitos: Funções recursivas, teoremas de Gödel</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item metalanguage">
+                        <span class="book-category complementary">INTRODUÇÃO À METALÓGICA</span>
+                        <div class="book-title">An Introduction to Metalogic</div>
+                        <div class="book-author">Aladdin M. Yaqub</div>
+                        <div class="book-edition">Broadview Press, 2014</div>
+                        <div class="book-description">Introdução moderna e acessível à metalógica. Abordagem filosófica com rigor matemático.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Essenciais:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-2 (3-4 semanas):</strong> Fundamentos da metalógica. <span class="concept-highlight">Conceitos: Metalinguagem, objetolinguagem</span></li>
+                                <li><strong>Cap. 3-4 (5-7 semanas):</strong> Completude e correção. <span class="concept-highlight">Conceitos: Teoremas fundamentais</span></li>
+                                <li><strong>Cap. 5-7 (6-8 semanas):</strong> Limitações da lógica de primeira ordem. <span class="concept-highlight">Conceitos: Incompletude, indecidibilidade</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="study-block metalanguage">
+                    <h4>🎯 Estratégia para Metalógica - O Eixo Central:</h4>
+                    <p>A metalógica será o eixo unificador de todo o estudo. Recomenda-se:</p>
+                    <ul class="chapter-list">
+                        <li><strong>Hunter</strong> como introdução principal - estudo sequencial</li>
+                        <li><strong>Boolos et al.</strong> para conexões com computabilidade - estudo paralelo</li>
+                        <li><strong>Leary & Kristiansen</strong> para abordagem mais acessível - consulta conforme necessidade</li>
+                        <li><strong>Shoenfield</strong> para aprofundamento matemático - estudo gradativo após dominar Hunter</li>
+                    </ul>
+                    <p><strong>Objetivo:</strong> Compreender profundamente que a lógica estuda não apenas argumentos, mas os próprios sistemas formais.</p>
+                </div>
+            </section>
+
+            <!-- FASE 7: TEORIA DOS MODELOS -->
+            <section id="phase7">
+                <h2>FASE 7: Teoria dos Modelos <span class="parallel-tag">PARALELA</span></h2>
+                <div class="time-estimate">26-35 semanas + 2-3 semanas revisão</div>
+                
+                <div class="concept-grid">
+                    <div class="concept-card model-theory">
+                        <strong>Estruturas e Modelos</strong>
+                        <p>Interpretações, satisfação, verdade</p>
+                    </div>
+                    <div class="concept-card model-theory">
+                        <strong>Tipos e Espaços de Tipos</strong>
+                        <p>Tipos completos, omissão de tipos</p>
+                    </div>
+                    <div class="concept-card model-theory">
+                        <strong>Construção de Modelos</strong>
+                        <p>Ultraprodutos, compactação</p>
+                    </div>
+                    <div class="concept-card model-theory">
+                        <strong>Estabilidade e Classificação</strong>
+                        <p>Teoria da classificação de modelos</p>
+                    </div>
+                </div>
+                
+                <div class="book-grid">
+                    <div class="book-item model-theory">
+                        <span class="book-category core">INTRODUÇÃO MODERNA</span>
+                        <div class="book-title">Model Theory: An Introduction (2002)</div>
+                        <div class="book-author">David Marker</div>
+                        <div class="book-edition">Springer</div>
+                        <div class="book-description">Excelente introdução contemporânea à teoria dos modelos. Didática excelente para primeiro contacto com a área.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Sequenciais:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1 (4-6 semanas):</strong> Linguagens e estruturas. <span class="concept-highlight">Conceitos: Assinaturas, estruturas, subestruturas</span></li>
+                                <li><strong>Cap. 2 (5-7 semanas):</strong> Teoremas de completude. <span class="concept-highlight">Conceitos: Completude via compacidade</span></li>
+                                <li><strong>Cap. 3 (4-6 semanas):</strong> Teoremas de Löwenheim-Skolem. <span class="concept-highlight">Conceitos: Para cima e para baixo</span></li>
+                                <li><strong>Cap. 4 (5-7 semanas):</strong> Construção de modelos. <span class="concept-highlight">Conceitos: Diagramas, ultraprodutos</span></li>
+                                <li><strong>Cap. 5 (6-8 semanas):</strong> Tipos e espaços de tipos. <span class="concept-highlight">Conceitos: Tipos completos, espaços de Stone</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item model-theory">
+                        <span class="book-category reference">REFERÊNCIA CLÁSSICA</span>
+                        <div class="book-title">Model Theory (3ª edição, 2012)</div>
+                        <div class="book-author">C.C. Chang & H. Jerome Keisler</div>
+                        <div class="book-edition">Dover Publications</div>
+                        <div class="book-description">Referência clássica e enciclopédica. Cobertura completa e profunda da teoria dos modelos.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Selecionados:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-2 (5-7 semanas):</strong> Fundamentos da teoria dos modelos. <span class="concept-highlight">Conceitos: Linguagens, modelos, submodelos</span></li>
+                                <li><strong>Cap. 3-4 (6-8 semanas):</strong> Construções de modelos. <span class="concept-highlight">Conceitos: Ultraprodutos, compactação</span></li>
+                                <li><strong>Cap. 5-6 (6-8 semanas):</strong> Tipos e saturação. <span class="concept-highlight">Conceitos: Tipos, modelos saturados</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item model-theory">
+                        <span class="book-category complementary">ABORDAGEM CONCISA</span>
+                        <div class="book-title">A Shorter Model Theory (1997)</div>
+                        <div class="book-author">Wilfrid Hodges</div>
+                        <div class="book-edition">Cambridge University Press</div>
+                        <div class="book-description">Versão condensada do clássico "Model Theory". Abordagem mais acessível aos temas principais.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Essenciais:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-3 (4-6 semanas):</strong> Linguagens e estruturas. <span class="concept-highlight">Conceitos: Assinaturas, homomorfismos</span></li>
+                                <li><strong>Cap. 4-5 (5-7 semanas):</strong> Compactação e tipos. <span class="concept-highlight">Conceitos: Teorema da compacidade</span></li>
+                                <li><strong>Cap. 6-8 (6-8 semanas):</strong> Construções especiais. <span class="concept-highlight">Conceitos: Ultraprodutos, modelos saturados</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FASE 8: TEORIA DA PROVA -->
+            <section id="phase8">
+                <h2 style="border-bottom-color: var(--proof-theory-color);">FASE 8: Teoria da Prova <span class="parallel-tag">PARALELA</span></h2>
+                <div class="time-estimate proof-theory">16-23 semanas + 2 semanas revisão</div>
+                
+                <div class="concept-grid">
+                    <div class="concept-card proof-theory">
+                        <strong>Sistemas de Sequentes</strong>
+                        <p>LK (clássico), LJ (intuicionista)</p>
+                    </div>
+                    <div class="concept-card proof-theory">
+                        <strong>Eliminação de Cortes</strong>
+                        <p>Teorema de Gentzen (Hauptsatz)</p>
+                    </div>
+                    <div class="concept-card proof-theory">
+                        <strong>Correspondência Curry-Howard</strong>
+                        <p>Provas como programas, tipos como proposições</p>
+                    </div>
+                    <div class="concept-card proof-theory">
+                        <strong>Normalização</strong>
+                        <p>Propriedades de redução em dedução natural</p>
+                    </div>
+                </div>
+                
+                <div class="book-grid">
+                    <div class="book-item proof-theory">
+                        <span class="book-category proof-theory">REFERÊNCIA CENTRAL</span>
+                        <div class="book-title">Basic Proof Theory (2ª edição, 2000)</div>
+                        <div class="book-author">A.S. Troelstra & Helmut Schwichtenberg</div>
+                        <div class="book-edition">Cambridge University Press</div>
+                        <div class="book-description">Referência central para cálculos de sequentes e teoria da prova clássica. Tratamento completo e rigoroso.</div>
+                        <div class="book-chapters proof-theory">
+                            <strong>Capítulos Fundamentais:</strong>
+                            <ul class="chapter-list proof-theory">
+                                <li><strong>Capítulo 1 (2-3 semanas):</strong> Introduction to proof theory. <span class="concept-highlight">Conceitos: Prova como objeto matemático</span></li>
+                                <li><strong>Capítulo 2 (3-4 semanas):</strong> Natural deduction systems. <span class="concept-highlight">Conceitos: Dedução natural, normalização</span></li>
+                                <li><strong>Capítulo 3 (4-5 semanas):</strong> Sequent systems (LK, LJ). <span class="concept-highlight">Conceitos: Sequentes, regras estruturais</span></li>
+                                <li><strong>Capítulo 4 (4-5 semanas):</strong> Cut elimination theorem (Hauptsatz). <span class="concept-highlight">Conceitos: Eliminação de corte, subfórmula</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item proof-theory">
+                        <span class="book-category proof-theory">PERSPECTIVA CONCEITUAL</span>
+                        <div class="book-title">Proofs and Types (1989)</div>
+                        <div class="book-author">Jean-Yves Girard, Yves Lafont & Paul Taylor</div>
+                        <div class="book-edition">Cambridge University Press</div>
+                        <div class="book-description">Essencial para entender o Isomorfismo de Curry-Howard e fundamentos construtivos. Conexão profunda entre lógica e computação.</div>
+                        <div class="book-chapters proof-theory">
+                            <strong>Capítulos para Integração Conceitual:</strong>
+                            <ul class="chapter-list proof-theory">
+                                <li><strong>Capítulo 1 (2-3 semanas):</strong> The connection between proofs and computations. <span class="concept-highlight">Conceitos: Prova como algoritmo</span></li>
+                                <li><strong>Capítulo 2 (3-4 semanas):</strong> The simply typed lambda-calculus. <span class="concept-highlight">Conceitos: λ-cálculo tipado</span></li>
+                                <li><strong>Capítulo 3 (3-4 semanas):</strong> The strong normalization theorem. <span class="concept-highlight">Conceitos: Normalização forte</span></li>
+                                <li><strong>Capítulo 4 (2-3 semanas):</strong> The Church-Rosser property. <span class="concept-highlight">Conceitos: Confluência</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item proof-theory">
+                        <span class="book-category proof-theory">PERSPECTIVA COMPUTACIONAL</span>
+                        <div class="book-title">Program = Proof (2020)</div>
+                        <div class="book-author">Samuel Mimram</div>
+                        <div class="book-edition">Springer</div>
+                        <div class="book-description">Abordagem moderna da correspondência prova-programa com aplicações práticas. Conexão direta com ciência da computação.</div>
+                        <div class="book-chapters proof-theory">
+                            <strong>Capítulos Selecionados:</strong>
+                            <ul class="chapter-list proof-theory">
+                                <li><strong>Cap. 1-2 (3-4 semanas):</strong> Introdução à correspondência. <span class="concept-highlight">Conceitos: Prova como programa</span></li>
+                                <li><strong>Cap. 3-5 (4-6 semanas):</strong> Aplicações computacionais. <span class="concept-highlight">Conceitos: Verificação formal</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item proof-theory">
+                        <span class="book-category proof-theory">TEORIA ESTRUTURAL</span>
+                        <div class="book-title">Structural Proof Theory (2001)</div>
+                        <div class="book-author">Sara Negri & Jan von Plato</div>
+                        <div class="book-edition">Cambridge University Press</div>
+                        <div class="book-description">Abordagem moderna focada na estrutura das provas. Sistemas de prova para lógicas não-clássicas.</div>
+                        <div class="book-chapters proof-theory">
+                            <strong>Capítulos Essenciais:</strong>
+                            <ul class="chapter-list proof-theory">
+                                <li><strong>Cap. 1-4 (4-6 semanas):</strong> Sistemas de sequentes básicos. <span class="concept-highlight">Conceitos: Regras estruturais</span></li>
+                                <li><strong>Cap. 5-8 (5-7 semanas):</strong> Extensões modais e não-clássicas. <span class="concept-highlight">Conceitos: Lógica modal em sistemas de prova</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="study-block proof-theory">
+                    <h4>📅 ESTRATÉGIA DE ESTUDO - TEORIA DA PROVA:</h4>
+                    
+                    <h5>📘 Bloco 1: Fundamentos (5-7 semanas)</h5>
+                    <p><strong>Troelstra & Schwichtenberg:</strong> Capítulos 1-3</p>
+                    <p><strong>Girard:</strong> Capítulo 1</p>
+                    <ul class="chapter-list">
+                        <li>Sistemas de dedução natural</li>
+                        <li>Sistemas de sequentes (LK, LJ)</li>
+                        <li>Exercícios: construir provas em diferentes sistemas</li>
+                    </ul>
+                    
+                    <h5>⚡ Bloco 2: Teoremas Centrais (6-8 semanas)</h5>
+                    <p><strong>Troelstra & Schwichtenberg:</strong> Capítulos 4-5</p>
+                    <p><strong>Girard:</strong> Capítulos 2-3</p>
+                    <ul class="chapter-list">
+                        <li>Teorema de eliminação de cortes (Hauptsatz)</li>
+                        <li>Propriedade da subfórmula</li>
+                        <li>Normalização e teorema da normalização forte</li>
+                    </ul>
+                    
+                    <h5>🔗 Bloco 3: Aplicações e Conexões (5-8 semanas)</h5>
+                    <p><strong>Girard:</strong> Capítulos 4-6</p>
+                    <p><strong>Mimram:</strong> Capítulos selecionados</p>
+                    <p><strong>Negri & von Plato:</strong> Capítulos selecionados</p>
+                    <ul class="chapter-list">
+                        <li>Correspondência Curry-Howard</li>
+                        <li>Provas como programas, tipos como proposições</li>
+                        <li>Aplicações em ciência da computação</li>
+                        <li>Estrutura geral das provas formais</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- FASE 9: TEORIA DE TIPOS -->
+            <section id="phase9">
+                <h2>FASE 9: Teoria de Tipos <span class="parallel-tag">PARALELA</span></h2>
+                <div class="time-estimate type-theory">16-23 semanas + 2 semanas revisão</div>
+                
+                <div class="concept-grid">
+                    <div class="concept-card type-theory">
+                        <strong>λ-Cálculo Tipado</strong>
+                        <p>Termos, tipos, redução</p>
+                    </div>
+                    <div class="concept-card type-theory">
+                        <strong>Sistemas de Tipos</strong>
+                        <p>Tipos simples, polimorfismo, dependência</p>
+                    </div>
+                    <div class="concept-card type-theory">
+                        <strong>Correspondência com Lógica</strong>
+                        <p>Proposições como tipos, provas como termos</p>
+                    </div>
+                    <div class="concept-card type-theory">
+                        <strong>Teoria de Tipos Homotópica</strong>
+                        <p>Tipos como espaços, igualdade como caminhos</p>
+                    </div>
+                </div>
+                
+                <div class="book-grid">
+                    <div class="book-item type-theory">
+                        <span class="book-category type-theory">INTRODUÇÃO PRÁTICA</span>
+                        <div class="book-title">Types and Programming Languages (2002)</div>
+                        <div class="book-author">Benjamin C. Pierce</div>
+                        <div class="book-edition">MIT Press</div>
+                        <div class="book-description">A intersecção prática entre lógica e estrutura de dados fundamentais. Abordagem computacional da teoria de tipos.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Essenciais:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-8 (4-6 semanas):</strong> λ-cálculo não tipado e tipado simples. <span class="concept-highlight">Conceitos: Redução, normalização</span></li>
+                                <li><strong>Cap. 9-15 (6-8 semanas):</strong> Polimorfismo e sistemas de tipos avançados. <span class="concept-highlight">Conceitos: Tipos universais e existenciais</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item type-theory">
+                        <span class="book-category type-theory">TEORIA FORMAL</span>
+                        <div class="book-title">Type Theory and Formal Proof: An Introduction (2014)</div>
+                        <div class="book-author">Rob Nederpelt & Herman Geuvers</div>
+                        <div class="book-edition">Cambridge University Press</div>
+                        <div class="book-description">Tratamento formal completo da teoria de tipos. Rigor matemático na apresentação de sistemas de tipos.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Sequenciais:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-4 (4-6 semanas):</strong> λ-cálculo e tipos simples. <span class="concept-highlight">Conceitos: Tipos, contexto, juízos</span></li>
+                                <li><strong>Cap. 5-7 (5-7 semanas):</strong> Teoria de tipos pura. <span class="concept-highlight">Conceitos: Sistemas λP, λω, λPω</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item type-theory">
+                        <span class="book-category type-theory">INTEGRAÇÃO LÓGICA-TIPOS</span>
+                        <div class="book-title">An Introduction to Mathematical Logic and Type Theory: To Truth Through Proof (2ª edição, 2002)</div>
+                        <div class="book-author">Peter B. Andrews</div>
+                        <div class="book-edition">Springer</div>
+                        <div class="book-description">Abordagem integrada de lógica e teoria de tipos. Excelente para transição filosófica-matemática.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Essenciais:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1 (2-3 semanas):</strong> Introduction to type theory. <span class="concept-highlight">Conceitos: Sistema Q0</span></li>
+                                <li><strong>Cap. 2 (3-4 semanas):</strong> Propositional type theory. <span class="concept-highlight">Conceitos: Tipos proposicionais</span></li>
+                                <li><strong>Cap. 3 (4-5 semanas):</strong> First-order type theory. <span class="concept-highlight">Conceitos: Tipos de primeira ordem</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item type-theory">
+                        <span class="book-category reference">TEORIA DE TIPOS HOMOTÓPICA</span>
+                        <div class="book-title">Homotopy Type Theory: Univalent Foundations of Mathematics (2013)</div>
+                        <div class="book-author">The Univalent Foundations Program</div>
+                        <div class="book-edition">Institute for Advanced Study</div>
+                        <div class="book-description">Abordagem revolucionária que une teoria de tipos homotópica e fundamentos da matemática. Nível avançado.</div>
+                        <div class="book-chapters">
+                            <strong>Introdução (estudo seletivo):</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-2 (3-4 semanas):</strong> Introdução à HoTT. <span class="concept-highlight">Conceitos: Tipos como espaços</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item type-theory">
+                        <span class="book-category reference">FUNDAMENTAÇÃO PRÁTICA</span>
+                        <div class="book-title">Practical Foundations for Programming Languages (2ª edição, 2016)</div>
+                        <div class="book-author">Robert Harper</div>
+                        <div class="book-edition">MIT Press</div>
+                        <div class="book-description">Abordagem unificada de teoria de tipos e semântica de linguagens de programação. Perspectiva computacional profunda.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Selecionados:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-5 (4-6 semanas):</strong> Fundamentos de semântica. <span class="concept-highlight">Conceitos: Semântica operacional</span></li>
+                                <li><strong>Cap. 6-10 (5-7 semanas):</strong> Sistemas de tipos. <span class="concept-highlight">Conceitos: Polimorfismo, sub tipagem</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FASE 10: PROVAS AUTOMÁTICAS -->
+            <section id="phase10">
+                <h2>FASE 10: Provas Automáticas (Primeira Ordem)</h2>
+                <div class="time-estimate">11-16 semanas + 1 semana revisão</div>
+                
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <strong>Resolução</strong>
+                        <p>Unificação, refutação, estratégias</p>
+                    </div>
+                    <div class="concept-card">
+                        <strong>Tableaux</strong>
+                        <p>Tableaux semânticos, expansão</p>
+                    </div>
+                    <div class="concept-card">
+                        <strong>Paramodulação</strong>
+                        <p>Igualdade, equacionalidade</p>
+                    </div>
+                    <div class="concept-card">
+                        <strong>Implementação</strong>
+                        <p>Estratégias de busca, heurísticas</p>
+                    </div>
+                </div>
+                
+                <div class="book-grid">
+                    <div class="book-item">
+                        <span class="book-category core">REFERÊNCIA COMPLETA</span>
+                        <div class="book-title">First-Order Logic and Automated Theorem Proving (2ª edição, 1996)</div>
+                        <div class="book-author">Melvin Fitting</div>
+                        <div class="book-edition">Springer</div>
+                        <div class="book-description">Tratamento completo e acessível de provas automáticas. Cobre desde fundamentos até implementação.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Completos:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Capítulo 1 (1-2 semanas):</strong> Introduction and overview. <span class="concept-highlight">Conceitos: ATP, motivação</span></li>
+                                <li><strong>Capítulo 2 (2-3 semanas):</strong> Propositional logic resolution. <span class="concept-highlight">Conceitos: Resolução proposicional</span></li>
+                                <li><strong>Capítulo 3 (3-4 semanas):</strong> First-order resolution. <span class="concept-highlight">Conceitos: Unificação, resolução de primeira ordem</span></li>
+                                <li><strong>Capítulo 4 (2-3 semanas):</strong> Tableaux methods. <span class="concept-highlight">Conceitos: Tableaux semânticos</span></li>
+                                <li><strong>Capítulo 5 (2-3 semanas):</strong> Equality and paramodulation. <span class="concept-highlight">Conceitos: Paramodulação, igualdade</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FASE 11: LÓGICA MODAL DE PRIMEIRA ORDEM -->
+            <section id="phase11">
+                <h2>FASE 11: Lógica Modal de Primeira Ordem</h2>
+                <div class="time-estimate">13-18 semanas + 2 semanas revisão</div>
+                
+                <div class="concept-grid">
+                    <div class="concept-card modal-logic">
+                        <strong>Semântica de Mundos Possíveis</strong>
+                        <p>Estruturas de Kripke, acessibilidade</p>
+                    </div>
+                    <div class="concept-card modal-logic">
+                        <strong>Quantificação Modal</strong>
+                        <p>Domínios fixos vs. variáveis, rigidez</p>
+                    </div>
+                    <div class="concept-card modal-logic">
+                        <strong>Sistemas Dedutivos</strong>
+                        <p>Axiomas modais, regras de necessitação</p>
+                    </div>
+                    <div class="concept-card modal-logic">
+                        <strong>Completude Modal</strong>
+                        <p>Completude canônica, construções de modelos</p>
+                    </div>
+                </div>
+                
+                <div class="book-grid">
+                    <div class="book-item modal-logic">
+                        <span class="book-category core">REFERÊNCIA AUTORITATIVA</span>
+                        <div class="book-title">First-Order Modal Logic (2ª edição, 1998)</div>
+                        <div class="book-author">Melvin Fitting & Richard L. Mendelsohn</div>
+                        <div class="book-edition">Springer</div>
+                        <div class="book-description">Tratamento completo da lógica modal quantificada. Abordagem rigorosa das questões técnicas e filosóficas.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Essenciais:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-3 (4-6 semanas):</strong> Fundamentos da lógica modal quantificada. <span class="concept-highlight">Conceitos: Sintaxe modal, semântica de Kripke</span></li>
+                                <li><strong>Cap. 4-5 (5-7 semanas):</strong> Semântica de mundos possíveis com domínios. <span class="concept-highlight">Conceitos: Domínios fixos/variáveis, rigidez</span></li>
+                                <li><strong>Cap. 6-7 (4-6 semanas):</strong> Sistemas dedutivos para lógica modal. <span class="concept-highlight">Conceitos: Sistemas K, T, S4, S5</span></li>
+                                <li><strong>Cap. 8-9 (5-7 semanas):</strong> Teoremas de completude e aplicações. <span class="concept-highlight">Conceitos: Completude canônica</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item modal-logic">
+                        <span class="book-category complementary">PERSPECTIVA FILOSÓFICA</span>
+                        <div class="book-title">Modal Logic for Philosophers</div>
+                        <div class="book-author">James W. Garson</div>
+                        <div class="book-edition">Cambridge University Press, 2006</div>
+                        <div class="book-description">Conecta a formalidade modal com questões ontológicas e epistemológicas. Abordagem filosófica rigorosa.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Selecionados:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-3 (3-4 semanas):</strong> Lógica modal básica. <span class="concept-highlight">Conceitos: Sistemas modais, semântica</span></li>
+                                <li><strong>Cap. 4-6 (4-5 semanas):</strong> Quantificação modal. <span class="concept-highlight">Conceitos: Domínios, existência</span></li>
+                                <li><strong>Cap. 7-9 (4-5 semanas):</strong> Aplicações filosóficas. <span class="concept-highlight">Conceitos: Necessidade, possibilidade, tempo</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FASE 12: LÓGICAS NÃO-CLÁSSICAS -->
+            <section id="phase12">
+                <h2>FASE 12: Lógicas Não-Clássicas <span class="parallel-tag">PARALELA</span></h2>
+                <div class="time-estimate">14-21 semanas + 2 semanas revisão</div>
+                
+                <div class="concept-grid">
+                    <div class="concept-card nonclassical">
+                        <strong>Intuicionismo</strong>
+                        <p>Matemática construtiva, negação intuicionista</p>
+                    </div>
+                    <div class="concept-card nonclassical">
+                        <strong>Paraconsistência</strong>
+                        <p>Tolerância a contradições, trivialização</p>
+                    </div>
+                    <div class="concept-card nonclassical">
+                        <strong>Relevância</strong>
+                        <p>Conectivos relevantes, implicação relevante</p>
+                    </div>
+                    <div class="concept-card nonclassical">
+                        <strong>Lógicas Difusas</strong>
+                        <p>Graus de verdade, lógicas fuzzy</p>
+                    </div>
+                </div>
+                
+                <div class="book-grid">
+                    <div class="book-item nonclassical">
+                        <span class="book-category core">PANORAMA ABRANGENTE</span>
+                        <div class="book-title">An Introduction to Non-Classical Logic: From If to Is (2ª edição, 2008)</div>
+                        <div class="book-author">Graham Priest</div>
+                        <div class="book-edition">Cambridge University Press</div>
+                        <div class="book-description">Panorama completo das lógicas alternativas. Abordagem filosófica profunda com rigor formal.</div>
+                        <div class="book-chapters">
+                            <strong>Seleção de Capítulos:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-4 (4-6 semanas):</strong> Lógica intuicionista e construtiva. <span class="concept-highlight">Conceitos: Semântica de Kripke para intuicionismo</span></li>
+                                <li><strong>Cap. 5-8 (5-7 semanas):</strong> Lógicas paraconsistentes. <span class="concept-highlight">Conceitos: LP, sistemas paraconsistentes</span></li>
+                                <li><strong>Cap. 9-12 (5-7 semanas):</strong> Lógicas relevantes. <span class="concept-highlight">Conceitos: Sistemas R, E</span></li>
+                                <li><strong>Cap. 13-16 (4-6 semanas):</strong> Lógicas fuzzy, probabilísticas e outras. <span class="concept-highlight">Conceitos: Lógicas multivaloradas</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item nonclassical">
+                        <span class="book-category complementary">ABORDAGEM ALGÉBRICA</span>
+                        <div class="book-title">Algebraic Methods in Philosophical Logic (2001)</div>
+                        <div class="book-author">J. Michael Dunn & Gary Hardegree</div>
+                        <div class="book-edition">Oxford University Press</div>
+                        <div class="book-description">Abordagem algébrica às lógicas não-clássicas. Fundamentos matemáticos das lógicas alternativas.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Selecionados:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-3 (3-4 semanas):</strong> Álgebras de lógica. <span class="concept-highlight">Conceitos: Álgebras de Boole, Heyting</span></li>
+                                <li><strong>Cap. 4-6 (4-5 semanas):</strong> Semântica algébrica. <span class="concept-highlight">Conceitos: Reticulados, operadores</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item nonclassical">
+                        <span class="book-category complementary">PLURALISMO LÓGICO</span>
+                        <div class="book-title">Logical Pluralism (2006)</div>
+                        <div class="book-author">JC Beall & Greg Restall</div>
+                        <div class="book-edition">Oxford University Press</div>
+                        <div class="book-description">Defesa filosófica do pluralismo lógico. Discussão metafilosófica sobre a natureza da lógica.</div>
+                        <div class="book-chapters">
+                            <strong>Estudo Completo:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-2 (2-3 semanas):</strong> Introdução ao pluralismo. <span class="concept-highlight">Conceitos: Múltiplas noções de consequência</span></li>
+                                <li><strong>Cap. 3-5 (3-4 semanas):</strong> Defesa do pluralismo. <span class="concept-highlight">Conceitos: Argumentos filosóficos</span></li>
+                                <li><strong>Cap. 6-7 (2-3 semanas):</strong> Implicações e respostas a objeções. <span class="concept-highlight">Conceitos: Críticas e defesas</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FASE 13: LÓGICA DE CONTRAFACTUAIS -->
+            <section id="phase13">
+                <h2>FASE 13: Lógica de Contrafactuais <span class="parallel-tag">PARALELA</span></h2>
+                <div class="time-estimate">14-21 semanas + 2 semanas revisão</div>
+                
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <strong>Condicionais Contrafactuais</strong>
+                        <p>Se... então... em circunstâncias contrafactuais</p>
+                    </div>
+                    <div class="concept-card">
+                        <strong>Semântica de Similaridade</strong>
+                        <p>Mundos possíveis, relações de similaridade</p>
+                    </div>
+                    <div class="concept-card">
+                        <strong>Condicionais Indicativos</strong>
+                        <p>Condicionais do discurso ordinário</p>
+                    </div>
+                    <div class="concept-card">
+                        <strong>Aplicações Filosóficas</strong>
+                        <p>Causalidade, responsabilidade, leis naturais</p>
+                    </div>
+                </div>
+                
+                <div class="book-grid">
+                    <div class="book-item">
+                        <span class="book-category core">TRATAMENTO FUNDAMENTAL</span>
+                        <div class="book-title">Counterfactuals (1973)</div>
+                        <div class="book-author">David Lewis</div>
+                        <div class="book-edition">Harvard University Press</div>
+                        <div class="book-description">Tratamento seminal da lógica de condicionais contrafactuais. Semântica de similaridade de mundos possíveis.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Essenciais:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-2 (4-6 semanas):</strong> Fundamentos dos condicionais. <span class="concept-highlight">Conceitos: Análise de Stalnaker-Lewis</span></li>
+                                <li><strong>Cap. 3-4 (5-7 semanas):</strong> Semântica formal. <span class="concept-highlight">Conceitos: Sistemas de esferas, similaridade</span></li>
+                                <li><strong>Cap. 5-6 (5-6 semanas):</strong> Aplicações e implicações. <span class="concept-highlight">Conceitos: Causalidade, leis naturais</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item">
+                        <span class="book-category complementary">PERSPECTIVA LINGUÍSTICA</span>
+                        <div class="book-title">Modals and Conditionals: New and Revised Perspectives (2012)</div>
+                        <div class="book-author">Angelika Kratzer</div>
+                        <div class="book-edition">Oxford University Press</div>
+                        <div class="book-description">Análise linguística formal de modais e condicionais. Abordagem através de bases modais.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Selecionados:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-3 (4-5 semanas):</strong> Modais e condicionais básicos. <span class="concept-highlight">Conceitos: Bases modais, ordenação</span></li>
+                                <li><strong>Cap. 4-6 (5-6 semanas):</strong> Condicionais e modais complexos. <span class="concept-highlight">Conceitos: Condicionais indicativos vs. subjuntivos</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item">
+                        <span class="book-category complementary">PERSPECTIVA PROBABILÍSTICA</span>
+                        <div class="book-title">Counterfactuals and Probability (2017)</div>
+                        <div class="book-author">Moritz Schulz</div>
+                        <div class="book-edition">Oxford University Press</div>
+                        <div class="book-description">Abordagem probabilística dos contrafactuais. Conexão entre condicionais e probabilidade.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Selecionados:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-2 (3-4 semanas):</strong> Probabilidade de condicionais. <span class="concept-highlight">Conceitos: Teorema de Adams</span></li>
+                                <li><strong>Cap. 3-5 (4-5 semanas):</strong> Análise probabilística. <span class="concept-highlight">Conceitos: Imaging, probabilidade condicional</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item">
+                        <span class="book-category complementary">GUIA FILOSÓFICO</span>
+                        <div class="book-title">A Philosophical Guide to Conditionals (2003)</div>
+                        <div class="book-author">Jonathan Bennett</div>
+                        <div class="book-edition">Oxford University Press</div>
+                        <div class="book-description">Análise filosófica abrangente dos condicionais. Revisão crítica das principais teorias.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Essenciais:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-4 (4-6 semanas):</strong> Teorias dos condicionais. <span class="concept-highlight">Conceitos: Material, estrita, variável estrita</span></li>
+                                <li><strong>Cap. 5-8 (5-7 semanas):</strong> Análise e avaliação. <span class="concept-highlight">Conceitos: Objeções, defesas</span></li>
+                                <li><strong>Cap. 9-12 (5-6 semanas):</strong> Questões filosóficas. <span class="concept-highlight">Conceitos: Implicatura, pressuposição</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FASE 14: LÓGICA CATEGÓRICA / TEORIA DE TOPOS -->
+            <section id="phase14">
+                <h2>FASE 14: Lógica Categórica / Teoria de Topos <span class="parallel-tag">PARALELA</span></h2>
+                <div class="time-estimate">16-23 semanas + 2 semanas revisão</div>
+                
+                <div class="concept-grid">
+                    <div class="concept-card category-theory">
+                        <strong>Categorias e Funtores</strong>
+                        <p>Objetos, morfismos, composição</p>
+                    </div>
+                    <div class="concept-card category-theory">
+                        <strong>Limites e Colimites</strong>
+                        <p>Produtos, equalizadores, pullbacks</p>
+                    </div>
+                    <div class="concept-card category-theory">
+                        <strong>Topos Elementar</strong>
+                        <p>Classificador de subobjetos, lógica interna</p>
+                    </div>
+                    <div class="concept-card category-theory">
+                        <strong>Lógica em Topos</strong>
+                        <p>Lógica intuicionista em topos</p>
+                    </div>
+                </div>
+                
+                <div class="book-grid">
+                    <div class="book-item category-theory">
+                        <span class="book-category category-theory">INTRODUÇÃO À TEORIA DAS CATEGORIAS</span>
+                        <div class="book-title">Category Theory (2ª edição, 2010)</div>
+                        <div class="book-author">Steve Awodey</div>
+                        <div class="book-edition">Oxford University Press</div>
+                        <div class="book-description">Introdução moderna e acessível à teoria das categorias. Fundamental para compreender fundamentos categóricos da lógica e matemática.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Sequenciais:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-4 (5-7 semanas):</strong> Categorias, funtores, transformações naturais. <span class="concept-highlight">Conceitos: Categorias, dualidade</span></li>
+                                <li><strong>Cap. 5-8 (6-8 semanas):</strong> Limites, adjunções, topos. <span class="concept-highlight">Conceitos: Limites/colimites, adjunções</span></li>
+                                <li><strong>Cap. 9-10 (5-7 semanas):</strong> Aplicações em lógica. <span class="concept-highlight">Conceitos: Categorias cartesianas fechadas</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item category-theory">
+                        <span class="book-category category-theory">TOPOS E LÓGICA</span>
+                        <div class="book-title">Topoi: The Categorial Analysis of Logic (edição revisada, 2006)</div>
+                        <div class="book-author">Robert Goldblatt</div>
+                        <div class="book-edition">Dover Publications</div>
+                        <div class="book-description">Conexão entre teoria de topos e lógica intuicionista. Abordagem clássica da lógica categórica.</div>
+                        <div class="book-chapters">
+                            <strong>Capítulos Essenciais:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-3 (4-6 semanas):</strong> Fundamentos de topos. <span class="concept-highlight">Conceitos: Topos elementar, classificador</span></li>
+                                <li><strong>Cap. 4-7 (6-8 semanas):</strong> Lógica em topos. <span class="concept-highlight">Conceitos: Lógica interna, semântica de Kripke-Joyal</span></li>
+                                <li><strong>Cap. 8-10 (6-8 semanas):</strong> Aplicações e extensões. <span class="concept-highlight">Conceitos: Geometria algébrica, teoria de conjuntos</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FASE 15: LÓGICA DE SEGUNDA ORDEM -->
+            <section id="phase15">
+                <h2>FASE 15: Lógica de Segunda Ordem</h2>
+                <div class="time-estimate">13-20 semanas + 1-2 semanas revisão</div>
+                
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <strong>Quantificação de Segunda Ordem</strong>
+                        <p>Quantificação sobre propriedades, relações</p>
+                    </div>
+                    <div class="concept-card">
+                        <strong>Semântica Standard vs Henkin</strong>
+                        <p>Interpretações completas vs incompletas</p>
+                    </div>
+                    <div class="concept-card">
+                        <strong>Incompletude</strong>
+                        <p>Não-axiomatizabilidade da semântica standard</p>
+                    </div>
+                    <div class="concept-card">
+                        <strong>Aplicações em Fundamentos</strong>
+                        <p>Categoricidade, fundamentos da matemática</p>
+                    </div>
+                </div>
+                
+                <div class="book-grid">
+                    <div class="book-item">
+                        <span class="book-category core">DEFESA E APLICAÇÕES</span>
+                        <div class="book-title">Foundations without Foundationalism: A Case for Second-Order Logic (1991)</div>
+                        <div class="book-author">Stewart Shapiro</div>
+                        <div class="book-edition">Oxford University Press</div>
+                        <div class="book-description">Defesa filosófica e matemática da lógica de segunda ordem. Análise profunda das questões técnicas e filosóficas.</div>
+                        <div class="book-chapters">
+                            <strong>Estrutura do Livro:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-2 (3-4 semanas):</strong> Introdução, sintaxe e motivação. <span class="concept-highlight">Conceitos: Quantificação de segunda ordem</span></li>
+                                <li><strong>Cap. 3-4 (4-6 semanas):</strong> Semântica, completude e incompletude. <span class="concept-highlight">Conceitos: Semântica standard vs. Henkin</span></li>
+                                <li><strong>Cap. 5-6 (4-5 semanas):</strong> Aplicações em matemática. <span class="concept-highlight">Conceitos: Categoricidade, aritmética</span></li>
+                                <li><strong>Cap. 7-8 (4-5 semanas):</strong> Categorias, fundamentos e implicações filosóficas. <span class="concept-highlight">Conceitos: Neologicismo, fundamentos</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item">
+                        <span class="book-category complementary">FILOSOFIA DA LÓGICA DE ORDEM SUPERIOR</span>
+                        <div class="book-title">A Philosophical Introduction to Higher-Order Logics (2023)</div>
+                        <div class="book-author">Andrew Bacon</div>
+                        <div class="book-edition">Routledge</div>
+                        <div class="book-description">Introdução filosófica moderna às lógicas de ordem superior. Perspectiva contemporânea sobre questões metafísicas e lógicas.</div>
+                        <div class="book-chapters">
+                            <strong>Estudo Completo do Livro:</strong>
+                            <ul class="chapter-list">
+                                <li><strong>Cap. 1-3 (3-4 semanas):</strong> Introdução às lógicas de ordem superior. <span class="concept-highlight">Conceitos: Tipos, hierarquias</span></li>
+                                <li><strong>Cap. 4-6 (4-6 semanas):</strong> Semântica e teoria dos modelos. <span class="concept-highlight">Conceitos: Modelos de ordem superior</span></li>
+                                <li><strong>Cap. 7-9 (4-6 semanas):</strong> Aplicações filosóficas. <span class="concept-highlight">Conceitos: Metafísica, fundamentos</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="book-item">
+                        <span class="book-category reference">SISTEMAS DE ARITMÉTICA</span>
+                        <div class="book-title">Subsystems of Second Order Arithmetic (2ª edição, 2009)</div>
+                        <div class="book-author">Stephen G. Simpson</div>
+                        <div class="book-edition">Cambridge University Press</div>
+                        <div class="book-description">Tratamento técnico profundo da matemática reversa e subsistemas da aritmética de segunda ordem. Nível avançado.</div>
+                        <div class="book-description">
+                            <strong>Estratégia de Estudo:</strong> Capítulos 1-2 para compreender os conceitos básicos (3-4 semanas). Capítulos posteriores como referência para tópicos específicos.
+                            <span class="concept-highlight">Conceitos: Matemática reversa, força de sistemas axiomáticos</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VISÃO GERAL DAS FASES -->
+            <section id="phases-overview">
+                <h2>📊 VISÃO GERAL DAS 15 FASES INTEGRADAS</h2>
+                
+                <div class="phase-container">
+                    <div class="phase-card philosophical" onclick="scrollToPhase(1)">
+                        <h3><span class="phase-number">1</span> Introdução à Lógica Formal</h3>
+                        <div class="time-estimate">8-12 semanas</div>
+                        <p><strong>Smith, Barwise & Etchemendy</strong></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                            2 livros | Fundamentos conceituais
+                        </p>
+                    </div>
+                    
+                    <div class="phase-card philosophical" onclick="scrollToPhase(2)">
+                        <h3><span class="phase-number">2</span> Lógica Clássica Rigorosa</h3>
+                        <div class="time-estimate">11-15 semanas</div>
+                        <p><strong>N.J.J. Smith, Schechter</strong></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                            2 livros | Semântica formal, provas naturais
+                        </p>
+                    </div>
+                    
+                    <div class="phase-card mathematical" onclick="scrollToPhase(3)">
+                        <h3><span class="phase-number">3</span> Técnicas de Prova</h3>
+                        <div class="time-estimate">11-15 semanas</div>
+                        <p><strong>Velleman, Enderton</strong></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                            2 livros | Rigor matemático, teoria de conjuntos
+                        </p>
+                    </div>
+                    
+                    <div class="phase-card philosophical" onclick="scrollToPhase(4)">
+                        <h3><span class="phase-number">4</span> Lógica e Linguagem</h3>
+                        <div class="time-estimate">16-23 semanas</div>
+                        <p><strong>Gamut, Sider</strong></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                            3 volumes | Perspectiva linguística e filosófica
+                        </p>
+                        <span class="parallel-tag">INÍCIO PARALELO</span>
+                    </div>
+                    
+                    <div class="phase-card mathematical" onclick="scrollToPhase(5)">
+                        <h3><span class="phase-number">5</span> Lógica Matemática Intermédia</h3>
+                        <div class="time-estimate">24-34 semanas</div>
+                        <p><strong>Bostock, Chiswell&Hodges, van Dalen, Rautenberg</strong></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                            4+ livros | Sistemas formais avançados
+                        </p>
+                        <span class="parallel-tag">PARALELA</span>
+                    </div>
+                    
+                    <div class="phase-card metalanguage" onclick="scrollToPhase(6)">
+                        <h3><span class="phase-number">6</span> Metalógica / Metateoria</h3>
+                        <div class="time-estimate">24-34 semanas</div>
+                        <p><strong>Hunter, Boolos et al., Shoenfield, Yaqub, Mendelson</strong></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                            6+ livros | Eixo central unificador
+                        </p>
+                        <span class="parallel-tag">PARALELA</span>
+                    </div>
+                    
+                    <div class="phase-card model-theory" onclick="scrollToPhase(7)">
+                        <h3><span class="phase-number">7</span> Teoria dos Modelos</h3>
+                        <div class="time-estimate">26-35 semanas</div>
+                        <p><strong>Marker, Chang&Keisler, Hodges</strong></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                            3 livros | Semântica profunda
+                        </p>
+                        <span class="parallel-tag">PARALELA</span>
+                    </div>
+                    
+                    <div class="phase-card proof-theory" onclick="scrollToPhase(8)">
+                        <h3><span class="phase-number">8</span> Teoria da Prova</h3>
+                        <div class="time-estimate">16-23 semanas</div>
+                        <p><strong>Troelstra & Schwichtenberg, Girard, Mimram, Negri & von Plato</strong></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                            4 livros | Prova como objeto matemático
+                        </p>
+                        <span class="parallel-tag">PARALELA</span>
+                    </div>
+                    
+                    <div class="phase-card type-theory" onclick="scrollToPhase(9)">
+                        <h3><span class="phase-number">9</span> Teoria de Tipos</h3>
+                        <div class="time-estimate">16-23 semanas</div>
+                        <p><strong>Pierce, Nederpelt&Geuvers, Andrews, HoTT, Harper</strong></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                            5 livros | Lógica como fundamento computacional
+                        </p>
+                        <span class="parallel-tag">PARALELA</span>
+                    </div>
+                    
+                    <div class="phase-card" onclick="scrollToPhase(10)">
+                        <h3><span class="phase-number">10</span> Provas Automáticas</h3>
+                        <div class="time-estimate">11-16 semanas</div>
+                        <p><strong>Fitting</strong></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                            1 livro | Implementação computacional
+                        </p>
+                    </div>
+                    
+                    <div class="phase-card modal-logic" onclick="scrollToPhase(11)">
+                        <h3><span class="phase-number">11</span> Lógica Modal 1ª Ordem</h3>
+                        <div class="time-estimate">13-18 semanas</div>
+                        <p><strong>Fitting & Mendelsohn, Garson</strong></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                            2 livros | Quantificação modal
+                        </p>
+                    </div>
+                    
+                    <div class="phase-card nonclassical" onclick="scrollToPhase(12)">
+                        <h3><span class="phase-number">12</span> Lógicas Não-Clássicas</h3>
+                        <div class="time-estimate">14-21 semanas</div>
+                        <p><strong>Priest, Dunn&Hardegree, Beall&Restall</strong></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                            3 livros | Alternativas ao clássico
+                        </p>
+                        <span class="parallel-tag">PARALELA</span>
+                    </div>
+                    
+                    <div class="phase-card" onclick="scrollToPhase(13)">
+                        <h3><span class="phase-number">13</span> Lógica de Contrafactuais</h3>
+                        <div class="time-estimate">14-21 semanas</div>
+                        <p><strong>Lewis, Kratzer, Schulz, Bennett</strong></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                            4 livros | Condicionais e mundos possíveis
+                        </p>
+                        <span class="parallel-tag">PARALELA</span>
+                    </div>
+                    
+                    <div class="phase-card category-theory" onclick="scrollToPhase(14)">
+                        <h3><span class="phase-number">14</span> Lógica Categórica</h3>
+                        <div class="time-estimate">16-23 semanas</div>
+                        <p><strong>Awodey, Goldblatt</strong></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                            2 livros | Fundamentos estruturais
+                        </p>
+                        <span class="parallel-tag">PARALELA</span>
+                    </div>
+                    
+                    <div class="phase-card" onclick="scrollToPhase(15)">
+                        <h3><span class="phase-number">15</span> Lógica 2ª Ordem</h3>
+                        <div class="time-estimate">13-20 semanas</div>
+                        <p><strong>Shapiro, Bacon, Simpson</strong></p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+                            3 livros | Fundamentos da matemática
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CRONOGRAMA COMPLETO -->
+            <section id="timeline">
+                <h2>⏰ CRONOGRAMA COMPLETO (6-8 ANOS)</h2>
+                
+                <div style="background: white; padding: 2rem; border-radius: 12px; margin: 2rem 0; box-shadow: 0 5px 20px rgba(0,0,0,0.06);">
+                    <div class="concept-card" style="margin-bottom: 1.5rem;">
+                        <strong>Período 1: Fundamentação (Anos 1-2)</strong>
+                        <p>Fases 1-3: 30-42 semanas + Fases 4-7 em paralelo: início gradual</p>
+                        <p style="font-size: 0.9rem; color: #666;">Objetivo: Transição filosófica → formalismo matemático básico</p>
+                    </div>
+                    
+                    <div class="concept-card" style="margin-bottom: 1.5rem;">
+                        <strong>Período 2: Aprofundamento Paralelo (Anos 2-4)</strong>
+                        <p>Fases 4-9 executadas em paralelo com ênfase alternada</p>
+                        <p style="font-size: 0.9rem; color: #666;">Metalógica (Fase 6) como eixo central de unificação conceitual</p>
+                    </div>
+                    
+                    <div class="concept-card" style="margin-bottom: 1.5rem;">
+                        <strong>Período 3: Especializações (Anos 4-6)</strong>
+                        <p>Fases 10-15: 81-118 semanas (algumas em paralelo)</p>
+                        <p style="font-size: 0.9rem; color: #666;">Especialização em áreas de interesse com síntese progressiva</p>
+                    </div>
+                    
+                    <div class="concept-card">
+                        <strong>Período 4: Síntese Final (Ano 6-8)</strong>
+                        <p>Revisão integrada, projeto final, consolidação profunda</p>
+                        <p style="font-size: 0.9rem; color: #666;">Integração filosofia-matemática, contribuição pessoal ao estudo</p>
+                    </div>
+                </div>
+                
+                <div class="total-time">
+                    <div style="font-size: 1.5rem; margin-bottom: 1rem;">📚 BIBLIOGRAFIA COMPLETA INTEGRADA</div>
+                    <div style="font-size: 2rem; margin-bottom: 1rem; font-weight: bold;">64 LIVROS ESPECIALIZADOS</div>
+                    <div style="opacity: 0.9; font-size: 1.1rem; margin-bottom: 1.5rem;">~310-420 semanas | 6-8 anos (com ritmo moderado)</div>
+                    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.3rem; font-weight: bold;">🎯</div>
+                            <div>Transição Filosófica</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.3rem; font-weight: bold;">⚡</div>
+                            <div>Progressão Cautelosa</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.3rem; font-weight: bold;">🧠</div>
+                            <div>Metalógica como Eixo</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.3rem; font-weight: bold;">📊</div>
+                            <div>Todos Livros IA's</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.3rem; font-weight: bold;">🔄</div>
+                            <div>Fases Paralelas</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ESTRATÉGIAS DE ESTUDO -->
+            <div class="note-box">
+                <h4>📝 ESTRATÉGIAS DE ESTUDO ADAPTADAS</h4>
+                
+                <div class="strategy-grid">
+                    <div class="strategy-card">
+                        <h5>🎯 Para Formação Filosófica</h5>
+                        <p><strong>Ênfase conceitual:</strong> Compreender "porquê" antes de "como"</p>
+                        <p><strong>Tradução filosófica:</strong> Relacionar cada conceito formal com problemas filosóficos correspondentes</p>
+                        <p><strong>Progressão gradual:</strong> Aceitar que alguns conceitos matemáticos precisam de tempo para amadurecer</p>
+                    </div>
+                    
+                    <div class="strategy-card">
+                        <h5>⚡ Para Bases Matemáticas Frágeis</h5>
+                        <p><strong>Revisão matemática:</strong> Usar Velleman e Enderton para preencher lacunas</p>
+                        <p><strong>Exercícios graduais:</strong> Começar com problemas conceituais, avançar para técnicos</p>
+                        <p><strong>Paciência consigo mesmo:</strong> Não comparar ritmo com estudantes de matemática pura</p>
+                    </div>
+                    
+                    <div class="strategy-card">
+                        <h5>🔄 Para Execução Paralela</h5>
+                        <p><strong>Foco alternado:</strong> 2-3 semanas em uma área, depois alternar</p>
+                        <p><strong>Conexões ativas:</strong> Buscar explicitamente relações entre áreas paralelas</p>
+                        <p><strong>Caderno de síntese:</strong> Documentar insights sobre conexões entre diferentes abordagens</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AVISOS IMPORTANTES -->
+            <div class="warning-box">
+                <h4>⚠️ AVISOS IMPORTANTES - PLANO AMBICIOSO</h4>
+                <p>Este plano integra <strong>TODOS os 64 livros sugeridos pelas diversas IA's</strong>, criando um percurso verdadeiramente abrangente.</p>
+                <p><strong>Flexibilidade é essencial:</strong> Adapte o plano ao seu ritmo, interesses e necessidades. Pode:</p>
+                <ul class="chapter-list">
+                    <li>Focar apenas nos livros "CORE" de cada fase</li>
+                    <li>Extender o tempo total conforme necessário</li>
+                    <li>Pular fases menos relevantes para seus interesses específicos</li>
+                    <li>Reordenar fases para melhor progressão pessoal</li>
+                </ul>
+                <p><strong>Metalógica como norte:</strong> A Fase 6 (Metalógica) deve ser referência constante. Sempre retornar a questões metateóricas para unificar aprendizado.</p>
+            </div>
+
+            <!-- RECOMENDAÇÕES FINAIS -->
+            <div class="study-block philosophical">
+                <h4>💡 RECOMENDAÇÕES FINAIS PARA JOSÉ</h4>
+                
+                <h5>🎓 Aproveite Sua Formação Filosófica</h5>
+                <p>Sua formação não é uma limitação, mas uma vantagem única. Você traz:</p>
+                <ul class="chapter-list">
+                    <li>Capacidade de pensamento conceitual profundo</li>
+                    <li>Familiaridade com argumentação rigorosa</li>
+                    <li>Sensibilidade para questões fundamentais</li>
+                    <li>Capacidade de contextualizar formalismo em quadros mais amplos</li>
+                </ul>
+                
+                <h5>⚖️ Equilíbrio entre Filosofia e Matemática</h5>
+                <p>O desafio não é "tornar-se matemático", mas sim <strong>integrar rigor matemático à sensibilidade filosófica</strong>.</p>
+                <p>Em cada fase, pergunte-se: "Qual é o significado filosófico deste formalismo? Que questões fundamentais ele aborda ou reformula?"</p>
+                
+                <h5>📈 Progressão Pessoal</h5>
+                <p>Lembre-se: este não é um currículo acadêmico com prazos rígidos. É um <strong>percurso pessoal de descoberta intelectual</strong>.</p>
+                <p>Celebre cada compreensão profunda, cada conexão estabelecida, cada momento de insight. O valor está no processo, não apenas no destino.</p>
+            </div>
+
+            <!-- BAIXAR PLANO -->
+            <section class="download-section">
+                <h2 style="color: white; border: none; margin-bottom: 1.5rem;">💾 BAIXAR PLANO UNIFICADO COMPLETO</h2>
+                <p>Plano integrado completo com <strong>TODOS os 64 livros das diversas IA's</strong>, organização cuidadosa para formação filosófica, e ênfase em metalógica como eixo unificador.</p>
+                <p><strong>Para salvar:</strong> Ctrl+S ou clique direito → "Salvar como..."</p>
+                <button class="btn-download" onclick="downloadPlan()">📥 Baixar Plano Unificado Completo</button>
+                <p style="margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.9;">
+                    15 fases integradas | 64 livros especializados | Transição filosofia→matemática | 6-8 anos
+                </p>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        function scrollToPhase(phaseNumber) {
+            const element = document.getElementById(`phase${phaseNumber}`);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                
+                // Highlight effect
+                const colors = {
+                    1: '#9b59b6', 2: '#9b59b6', 3: '#e74c3c', 4: '#9b59b6',
+                    5: '#e74c3c', 6: '#f39c12', 7: '#d35400', 8: '#8e44ad',
+                    9: '#3498db', 10: '#1a2a6c', 11: '#16a085', 12: '#2ecc71',
+                    13: '#1a2a6c', 14: '#27ae60', 15: '#1a2a6c'
+                };
+                
+                element.style.backgroundColor = '#f9f9f9';
+                element.style.boxShadow = `0 0 0 3px ${colors[phaseNumber]}`;
+                
+                setTimeout(() => {
+                    element.style.backgroundColor = '';
+                    element.style.boxShadow = '';
+                }, 2000);
+            }
+        }
+        
+        function downloadPlan() {
+            const htmlContent = `<!DOCTYPE html>${document.documentElement.outerHTML}`;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'plano-unificado-logica-matematica-completo.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            // Visual feedback
+            const btn = document.querySelector('.btn-download');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '✅ Plano Baixado!';
+            btn.style.background = 'linear-gradient(135deg, #27ae60, #229954)';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.style.background = '';
+            }, 3000);
+        }
+        
+        // Print styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @media print {
+                .btn-download, .download-section, .parallel-tag, .phase-card:hover {
+                    display: none !important;
+                }
+                .phase-card {
+                    break-inside: avoid;
+                    margin-bottom: 20px;
+                    border: 2px solid #ccc !important;
+                }
+                body {
+                    font-size: 11pt;
+                    background: white !important;
+                }
+                .phase-container {
+                    display: block !important;
+                }
+                .master-stats {
+                    background: #f8f9fa !important;
+                    color: black !important;
+                }
+                .book-grid {
+                    display: block !important;
+                }
+                .book-item {
+                    margin-bottom: 20px;
+                    break-inside: avoid;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
